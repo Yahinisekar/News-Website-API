@@ -59,7 +59,8 @@ const selectCategory = (e, category) => {
   options.forEach((element) => {
     element.classList.remove("active");
   });
-  requestURL = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}`;
+  requestURL = `https://newsapi.org/v2/everything?q=tesla&from=2024-01-06&sortBy=publishedAt&apiKey=0b73c52a255a4caba4492233d7b64c7c
+`;
   e.target.classList.add("active");
   getNews();
 };
