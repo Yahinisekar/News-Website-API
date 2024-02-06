@@ -26,7 +26,7 @@ const generateUI = (articles) => {
     let card = document.createElement("div");
     card.classList.add("news-card");
     card.innerHTML = `<div class="news-image-container">
-    <img src="${item.urlToImage || "./newspaper.jpg"}" alt="Image is not available" />
+    <img src="${item.urlToImage}" alt="Image is not available" />
     </div>
     <div class="news-content">
       <div class="news-title">
@@ -51,6 +51,7 @@ const getNews = async () => {
   }
   let data = await response.json();
   generateUI(data.articles);
+  console.log(data);
 };
 
 //Category Selection
@@ -59,8 +60,7 @@ const selectCategory = (e, category) => {
   options.forEach((element) => {
     element.classList.remove("active");
   });
-  requestURL = `https://newsapi.org/v2/everything?q=tesla&from=2024-01-06&sortBy=publishedAt&apiKey=0b73c52a255a4caba4492233d7b64c7c
-`;
+  requestURL = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}`;
   e.target.classList.add("active");
   getNews();
 };
